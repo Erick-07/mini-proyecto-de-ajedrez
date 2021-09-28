@@ -1,0 +1,173 @@
+Contenido del juego:
+
+    - 16 piezas en tu pocesión, en total son 32 piezas.
+    - Tablero de 8 * 8.
+    - Este tiene coordenas por la cual puedes dirigir tus movimientos.
+    - Cada quien tiene 8 peones, 2 torres, 2 alfiles, 2 caballos, 1 reina, 1 rey.
+    - Por lo general las piezas se dividen entre dos colores: Blancas y Negras.
+
+
+Reglas:
+    Reglas para el jugador: 
+        - Las Blancas siempre inician.
+        - Un jugador no puede tener mas de un turno seguido.
+        - Un jugador solo puede mover una ficha por turno.
+        - Un jugador no puede mover una pieza si no es su turno.
+        - Si el rey del jugador esta en jaque, no podra mover cualquier pieza, tiene que liberar al rey del 
+          jaque y pasar el turno al siguiente jugador.
+        - Si el rey esta en jaque mate, el juego se finaliza dando la victoria al bando que pudo hacerse con el 
+          rey de su contrincante.
+        - Las mismas piezas de un mismo color, no pueden ser capturadas.
+
+    Reglas para las piezas:
+        * General:
+            - Las piezas tienen que estar dentro del tablero.
+            - Las piezas que esten eliminadas, no pueden regresar al tablero por voluntad del jugador, esto solamente
+              es posible, si y solo si, un peon de tu bando logre ser coronado.
+            - Las piezas no pueden moverse diferente a su comportamiento natural, establecido por el juego.
+            - Las piezas no pueden saltar de su pieza enemiga, esto solamente lo puede hacer el caballo pero en circuntancias de que 
+              la casilla ha ocupar este desocupada o haya una pieza enemiga.
+            - Las piezas no pueden tomar una casilla ocupada por una pieza del mismo color, solamente puede ser posible si se puede capturar 
+              siendo enemiga.
+            
+        * Específico:
+            - El Peon:
+                ~ Movimiento natural:
+                    ` Un solo paso hacia adelante.
+                ~ Movimiento especial:
+                    ` Solamente al iniciar tiene la posibilidad de comenzar con 2 o 1 paso, con la condición de que al iniciar debe de estar
+                      su casilla de origen.
+                    ` Es la única pieza que al llegar a la última linea enemiga puede ser transformada en otra pieza cualquiera menos en 
+                      peon nuevamente.
+                ~ Movimiento de ataque:
+                    ` Solamente puede comer de forma diagonal en un solo paso si y solo si se encuentra con una pieza enemiga.
+                    ` Hay una captura especial llamada "Captura de peon al paso".
+                        `` Esta se realiza si el peon aliado esta en la 4 fila del bando enemigo y este da inicio a su peon moviendolo dos filas. 
+                           Esta captura se debe de hacer de inmediato, porque si se mueve otra pieza, esta condición no sera permitda al siguiente 
+                           turno, aunque la condición anterior este disponible.
+                ~ Posición inicial:    
+                    ` Iniciarán en la segunda fila de su bando.
+
+            - Las torres:
+                ~ Movimiento natural:
+                    ` Este puede moverse en T, es decir, entre filas y columnas.
+                ~ Movimiento especial:
+                    ` N/A.
+                ~ Movimiento de ataque:
+                    ` Puede capturar de acuerdo a su movimiento natural.
+                ~ Posición inicial:    
+                    ` Iniciarán en la fila 1 con la columna 1 & fila 1 columan 8 en piezas blancas, en el otro bando 
+                      iniciarán en la fila 7 con la columna 1 & fila 7 columan 8.
+
+            - El caballo:
+                ~ Movimiento natural:
+                    ` Este puede moverse en L.
+                ~ Movimiento especial:
+                    ` Este puede saltar a una casilla dirigida hacia su movimiento natural, si y solo si esta no esta ocupada o 
+                      se trata de una pieza enemiga.
+                ~ Movimiento de ataque:
+                    ` Puede capturar si y solo si en L.
+                ~ Posición inicial:    
+                    ` Iniciarán en la fila 1 con la columna 2 & fila 1 columan 7 en piezas blancas, en el otro bando 
+                      iniciarán en la fila 7 con la columna 2 & fila 7 columan 7.
+
+            - El alfil:
+                ~ Movimiento natural:
+                    ` Su movimiento es en diagonal, Este no tiene límite de alcance. 
+                ~ Movimiento especial:
+                    ` N/A.
+                ~ Movimiento de ataque:
+                    ` Al igual a su movimiento natural.
+                ~ Posición inicial:    
+                    ` Iniciarán en la fila 1 con la columna 3 & fila 1 columan 6 en piezas blancas, en el otro bando 
+                      iniciarán en la fila 7 con la columna 3 & fila 7 columan 6.
+
+            - La reina:
+                ~ Movimiento natural:
+                    ` Ésta se puede mover hacia todas las direcciones, esta no tiene límite en sus movimientos, sus movimientos tienen intersección
+                      con los del alfil y la torre, sin embargo no contiene el movimiento del caballo.
+                ~ Movimiento especial:
+                    ` Se puede mover para donde quiera, pero no puede saltar.
+                ~ Movimiento de ataque:
+                    ` Al moverse para donde quiera puede atacar segun el alcance del movimiento natural.
+                ~ Posición inicial:    
+                    ` Iniciarán en la fila 1 con la columna 4 en piezas blancas, en el otro bando 
+                      iniciarán en la fila 7 con la columna 4.
+
+            - El rey:
+                ~ Movimiento natural:
+                    ` Este se puede mover en 8 direcciones, pero a un solo paso como el peon.
+                ~ Movimiento especial:
+                    ` N/A.
+                ~ Movimiento de ataque:
+                    ` Este puede captuar de acuerdo a su movimiento natural.
+                ~ Posición inicial:    
+                    ` Iniciarán en la fila 1 con la columna 5 en piezas blancas, en el otro bando 
+                      iniciarán en la fila 7 con la columna 5.
+                    
+
+El juego tendrá diferentes clases, las cuales serán: Peon, Torre, caballo, alfil, dama y rey.
+
+De forma general cada clase tendrá su movimiento natural, lo cual el movimiento natural contendrá al movimiento de captura.
+
+Cada clase de las piezas tendrán, los siguientes atributos: El color, Id de que tipo de pieza sea(P: peon, D: Dama...), Posicion actual en fila, columna y 
+la posicion en fila y columna que desea mover esa pieza.
+
+Las diferentes clases tendrán los siguientes métodos:
+
+Clase peon:
+    * Método que indicara el movimiento que tendrá:
+        - La acción de mover al peon en dos pasos (si se dan las condiciones) o en uno.
+        - De verificar la captura de un peon en diagonal y al paso.
+        - Este método verificará tambien que los movimientos naturales, sean realizados correctamente, es decir,
+          que un peon blanco o negro, no puede moverse hacia atrás. 
+
+    * Método para capturar una pieza enemiga:
+        - Este verificará si esta en las diagonaes del peon y si la pieza es enemiga.
+
+    * Método para eliminar un peon al paso:
+        - Esta accion se puede realizar tomando un registro de las casillas iniciales del peon; para el blanco(fila:2 columnas del 1 al 8)
+          para el negro (fila:7 columnas del 1 al 8). Tomando ese registro podemos indentificar las casillas disponibles
+          para la captura al paso.
+
+    * Método para eliminar el registro:
+        - Si las condiciones estan disponibles para la captura al paso, pero el jugador no realiza esa jugada, al pasar el turno, esa condición 
+          se deberá de borrar.
+
+Clase Torre:
+    * Método movimiento que consistirá en:
+        - Verificación de su movimiento natural en forma de T.
+
+Clase caballo:
+    * Método movimiento que consistirá en:
+        - Verificación de su movimiento natural en forma de L.
+
+Clase Alfil:
+    * Método movimiento que consistirá en:
+        - Verificación de su movimiento natural en forma diagonal en X.
+
+Clase Dama:
+    * Método movimiento que consistirá en:
+        - Verificación de su movimiento natural, que son equivalentes con los de la torre y alfil.
+
+Clase Rey:
+    * Método movimiento que consistirá en:
+        - Verificación de su movimiento natural en sus 8 dirreciones.
+        - Método para verificar si el rey no esta en jaque.
+        - Método para definir si su rey esta en jaque mate.
+
+
+De forma general en la partida, el flujo es el siguiente:
+    
+    - Antes de cada movimiento y pasar de turno, deberá de comprobar si su rey no se encuentra en jaque.
+      Si, el rey se encuentra en jaque, se deberá de comprobar con el método de jaque mate, si este retorna true 
+      es que hay jaque mate. si este retorna false, es decir, que no esta en mate y que puede capturar o mover su rey. 
+      Eso implicará que no estará permitido hacer cualquier jugada libre, sino en ayuda a eliminar el jaque del rey.
+      Si resulta que el rey no se encuentra en jaque, estas libre de hacer cualquier movimiento con tus piezas y pasará 
+      al siguiente turno.
+
+    
+        
+    
+
+

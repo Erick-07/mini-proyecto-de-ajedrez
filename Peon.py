@@ -2,10 +2,7 @@
 #esa logica va antes
 
 import grig_general
-import Dama
-import caballo
-import Alfil
-import Torre
+
 gridd = grig_general.gridd
 
 #gridd.set_Tablero(1,0,"BP10")
